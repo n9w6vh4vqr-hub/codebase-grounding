@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>codebase-grounding — Curated codebase context for Claude Code (GROUNDING.md)</title>
+<meta name="description" content="codebase-grounding is an open-source Claude Code skill that builds GROUNDING.md, a curated context artifact so Claude understands your real architecture, patterns and constraints before it reviews code. Free under GPL v3, commercial licensing available.">
+<link rel="canonical" href="https://n9w6vh4vqr-hub.github.io/codebase-grounding/en/">
+<link rel="alternate" hreflang="es" href="https://n9w6vh4vqr-hub.github.io/codebase-grounding/">
+<link rel="alternate" hreflang="en" href="https://n9w6vh4vqr-hub.github.io/codebase-grounding/en/">
+<link rel="alternate" hreflang="x-default" href="https://n9w6vh4vqr-hub.github.io/codebase-grounding/">
+<meta property="og:title" content="codebase-grounding — curated codebase context for Claude Code">
+<meta property="og:description" content="Builds GROUNDING.md so Claude reviews code against your real architecture, not generic patterns. Free (GPL v3) or commercial license.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://n9w6vh4vqr-hub.github.io/codebase-grounding/en/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="codebase-grounding — curated codebase context for Claude Code">
+<meta name="twitter:description" content="An open-source Claude Code skill that builds GROUNDING.md: curated architecture, patterns and constraints, so reviews stop being generic.">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "codebase-grounding",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "description": "An open-source Claude Code skill that builds GROUNDING.md, a curated per-repository context artifact covering architecture, patterns and compliance constraints, so Claude reviews code against the real codebase instead of generic patterns.",
+  "url": "https://github.com/n9w6vh4vqr-hub/codebase-grounding",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+  "offers": [
+    {"@type": "Offer", "name": "Open source", "price": "0", "priceCurrency": "USD", "description": "Free under GPL v3 for open use."},
+    {"@type": "Offer", "name": "Commercial license", "description": "Case-by-case pricing for companies integrating codebase-grounding into a product or service without GPL v3 copyleft obligations."}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is codebase-grounding free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It is free and open source under GPL v3. You can install and use it with no cost and no paywall."}},
+    {"@type": "Question", "name": "What happens if I modify it?", "acceptedAnswer": {"@type": "Answer", "text": "Under GPL v3, modifications you distribute must also be shared under GPL v3. If that copyleft obligation does not work for your product or service, a commercial license removes it."}},
+    {"@type": "Question", "name": "Does it work with Claude Code?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it is built as a Claude Code skill. It runs inside your existing Claude Code workflow and produces a GROUNDING.md file in your repository."}},
+    {"@type": "Question", "name": "Can I use it inside my own SaaS product?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, under GPL v3 as long as you accept its copyleft terms. If you want to embed it in a closed-source product or service, use the commercial license instead."}},
+    {"@type": "Question", "name": "What exactly is GROUNDING.md?", "acceptedAnswer": {"@type": "Answer", "text": "A curated context artifact that lives at the root of the repository it describes: real architecture, patterns and constraints, with a file whitelist and a staleness hash. It never carries context between projects."}},
+    {"@type": "Question", "name": "What happens if the repo changes after the context was generated?", "acceptedAnswer": {"@type": "Answer", "text": "Every GROUNDING.md stores a SHA-256 hash of the included file set. On reuse it is recomputed and flags whether the repo changed, instead of blindly accepting a stale context."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <nav class="site">
+    <a class="brand" href="/codebase-grounding/en/">codebase-grounding</a>
+    <a class="link" href="#how">How it works</a>
+    <a class="link" href="#license">License</a>
+    <a class="link" href="#faq">FAQ</a>
+    <a class="link" href="/codebase-grounding/">ES</a>
+    <a class="btn" href="#license">Commercial use</a>
+    <a class="btn btn-primary" href="https://github.com/n9w6vh4vqr-hub/codebase-grounding" target="_blank" rel="noopener">Install free</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Claude Code skill · open source</span>
+      <h1>Claude knows your repo before it suggests a single line.</h1>
+      <p class="subtitle">codebase-grounding builds <code>GROUNDING.md</code>: a curated per-repository context artifact, so Claude understands your real architecture and constraints before reviewing code.</p>
+      <p class="summary">codebase-grounding is an open-source Claude Code skill that generates <code>GROUNDING.md</code> from your own repository. It is built for development teams using Claude Code who want code reviews grounded in their real architecture, not generic patterns. It installs in minutes via <code>git clone</code>, is free under GPL v3, and a commercial license exists for those who cannot take on copyleft.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/n9w6vh4vqr-hub/codebase-grounding" target="_blank" rel="noopener">Install free (GPL v3)</a>
+        <a class="btn btn-ghost" href="#license">Commercial use →</a>
+      </div>
+    </section>
+
+    <section>
+      <p class="problem-line">Claude does not know your architecture, so it suggests generic — or outright wrong — code.</p>
+    </section>
+
+    <section id="how">
+      <h6 class="kicker">How it works</h6>
+      <h2>Four steps, no crowded diagrams.</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <h3>SCOPE</h3>
+          <p>You explicitly curate which files enter the context, each with a one-line justification. It never scans the whole repo.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>ASSEMBLE</h3>
+          <p>Builds GROUNDING.md distinguishing the current state of the code from the desired state, scanning for secrets before writing anything.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>APPLY</h3>
+          <p>Claude uses that context to review or suggest code grounded in your codebase, not generic patterns.</p>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <h3>PERSIST</h3>
+          <p>Stores a SHA-256 hash of the file set; the next session verifies whether the repo changed before reusing it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h6 class="kicker">Installation</h6>
+      <h2>Installs by copying a folder — no npm, no pip.</h2>
+      <div class="code-block">
+        <button class="copy-btn" id="copy-install" type="button" aria-label="Copy commands">Copy</button>
+        <div><span class="prompt">$</span> git clone https://github.com/n9w6vh4vqr-hub/codebase-grounding.git</div>
+        <div><span class="prompt">$</span> cp -r codebase-grounding ~/.claude/skills/codebase-grounding</div>
+        <div class="comment"># requires Python 3.9+, no dependencies</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="scope-card">
+        <h6 class="kicker">Honest scope</h6>
+        <p>It does not produce regulatory compliance evidence or defensible traceability for a regulator — that comes from your git history, not this skill. Treat it as a precision, time-saving tool, not a compliance control.</p>
+      </div>
+    </section>
+
+    <section id="license">
+      <h6 class="kicker">License</h6>
+      <h2>Two paths, no fine print.</h2>
+      <div class="license-grid">
+        <div class="license-card">
+          <h3>GPL v3 — free</h3>
+          <p>For independent developers, startups, open source projects and educational use. Use, modify and distribute freely; a distributed modified version must stay under GPL v3, and you must give credit.</p>
+          <a class="btn btn-primary" href="https://github.com/n9w6vh4vqr-hub/codebase-grounding" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+        <div class="license-card">
+          <h3>Commercial — tailored</h3>
+          <p>For companies or consultants using it as part of a paid service to clients, or who need to keep private modifications without GPL v3 copyleft obligations. Case-by-case pricing.</p>
+          <a class="btn" href="mailto:diaatdia@hotmail.com?subject=codebase-grounding%20commercial%20license">Let's talk</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h6 class="kicker">FAQ</h6>
+      <h2>Frequently asked questions</h2>
+
+      <details class="faq-item" open>
+        <summary>Is it free?</summary>
+        <p>Yes. It is free and open source under GPL v3 for independent developers, startups, open source projects and educational use.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if I modify it?</summary>
+        <p>You can modify and distribute freely. A publicly shared modified version must stay under GPL v3, and you must give credit. If that does not work for you, the commercial license removes it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does it work with Claude Code?</summary>
+        <p>Yes, it is a Claude Code / Claude skill, not an npm or pip package. It is invoked in natural language inside a session; the included CLI only needs Python 3.9+, no dependencies.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use it in my SaaS or client services?</summary>
+        <p>Under GPL v3, yes, accepting the copyleft terms. If you use it as part of a paid service to clients or need to keep private modifications, the commercial license is the path.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What exactly is GROUNDING.md?</summary>
+        <p>A curated context artifact that lives at the root of the repository it describes: real architecture, patterns and constraints, with a file whitelist and a staleness hash. It never carries context between projects.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if the repo changes after the context was generated?</summary>
+        <p>Every GROUNDING.md stores a hash of the included file set. On reuse, it is recomputed and flags if the repo changed — instead of blindly accepting a stale context.</p>
+      </details>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span class="mono">codebase-grounding · GPL v3 or commercial</span>
+    <div class="links">
+      <a href="https://github.com/n9w6vh4vqr-hub/codebase-grounding" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">License</a>
+      <a href="mailto:diaatdia@hotmail.com">diaatdia@hotmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/copy.js"></script>
+</body>
+</html>

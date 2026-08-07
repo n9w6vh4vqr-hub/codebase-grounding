@@ -1,0 +1,231 @@
+:root {
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --text: #16181a;
+  --text-muted: #55595e;
+  --accent: #3f6f92;
+  --accent-strong: #2c5170;
+  --border: #dcdde0;
+  --code-bg: #16181a;
+  --code-text: #eef1f3;
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101214;
+    --surface: #17191c;
+    --text: #eceef0;
+    --text-muted: #a6acb3;
+    --accent: #7fb2da;
+    --accent-strong: #a7cbe8;
+    --border: #2a2d31;
+    --code-bg: #0b0c0d;
+    --code-text: #e7eaec;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+code, pre, .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
+
+a { color: var(--accent-strong); }
+a:hover { color: var(--accent); }
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+header.site {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav.site {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.brand { font-weight: 700; margin-right: auto; text-decoration: none; color: var(--text); font-size: 15px; }
+nav.site a.link { color: var(--text-muted); text-decoration: none; font-size: 14px; }
+nav.site a.link:hover { color: var(--text); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+}
+.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent-strong); color: #fff; }
+.btn-ghost { border-color: transparent; padding-inline: 6px; color: var(--accent-strong); }
+
+main { padding-bottom: 80px; }
+
+.hero { padding: 72px 0 40px; }
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: ui-monospace, monospace;
+}
+h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.12;
+  margin: 18px 0 16px;
+  max-width: 16ch;
+  letter-spacing: -0.01em;
+}
+.subtitle { font-size: 19px; color: var(--text-muted); max-width: 58ch; margin: 0 0 20px; }
+.summary {
+  font-size: 14.5px;
+  line-height: 1.7;
+  max-width: 62ch;
+  color: var(--text-muted);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 0 0 28px;
+  background: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.cta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+.lang-note { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
+
+section { padding: 40px 0; }
+h6.kicker {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+h2 { font-size: 28px; margin: 0 0 28px; max-width: 30ch; letter-spacing: -0.01em; }
+
+.problem-line { font-size: 20px; font-weight: 600; max-width: 44ch; margin: 0; }
+
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 720px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+.step {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--surface);
+}
+.step .num { font-family: ui-monospace, monospace; font-size: 12px; color: var(--accent-strong); }
+.step h3 { font-size: 15px; margin: 8px 0 6px; font-family: ui-monospace, monospace; letter-spacing: 0.02em; }
+.step p { font-size: 13.5px; color: var(--text-muted); margin: 0; }
+
+.code-block {
+  background: var(--code-bg);
+  color: var(--code-text);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  font-size: 13.5px;
+  position: relative;
+  overflow-x: auto;
+}
+.code-block .prompt { opacity: 0.55; user-select: none; }
+.code-block .comment { opacity: 0.55; margin-top: 8px; }
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--code-text);
+  border-radius: 4px;
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.08); }
+
+.scope-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.license-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 640px) { .license-grid { grid-template-columns: 1fr; } }
+.license-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.license-card h3 { font-size: 18px; margin: 0; }
+.license-card p { font-size: 14px; color: var(--text-muted); margin: 0; flex: 1; }
+
+details.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+details.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  list-style: none;
+}
+details.faq-item summary::-webkit-details-marker { display: none; }
+details.faq-item summary::after { content: "+"; float: right; color: var(--accent-strong); }
+details.faq-item[open] summary::after { content: "\2212"; }
+details.faq-item p { font-size: 14px; color: var(--text-muted); margin: 10px 0 0; max-width: 60ch; }
+
+footer.site {
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+}
+footer.site .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+footer.site a { color: var(--text-muted); text-decoration: none; }
+footer.site a:hover { color: var(--accent-strong); }
+footer.site .links { display: flex; gap: 18px; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
